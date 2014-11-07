@@ -13,7 +13,7 @@ syntax keyword wcfgTodo    contained TODO FIXME XXX NB NOTE
 syntax region  wcfgComment start="#" end="$" contains=wcfgTodo,@Spell
 syntax region  wcfgString  start=/"/ skip=/\\"/ end=/"/
 syntax keyword wcfgBoolean true True false False
-syntax match   wcfgIdent   "\v<[^:\s]+>"
+syntax match   wcfgIdent   "\v<[^:[:space:]]+>"
 syntax match   wcfgNumber  "\v<[-+]?\d+>"
 syntax match   wcfgNumber  "\v<[-+]?\d*.\d+>"
 syntax match   wcfgNumber  "\v<[-+]?\d*\.?\d+([Ee]-?)?\d+>"
