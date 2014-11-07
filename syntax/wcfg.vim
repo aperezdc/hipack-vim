@@ -13,30 +13,25 @@ set cpo&vim
 syntax case match
 syntax sync minlines=100
 
-syntax region  wcfgDict    transparent fold matchgroup=wcfgDictBound start="{" end="}" contains=ALLBUT,wcfgComma,wcfgColonError,wcfgIdentError
-syntax region  wcfgList    transparent matchgroup=wcfgListBound start="\[" end="\]" contains=ALLBUT,wcfgIdent,wcfgCommaError
-syntax keyword wcfgTodo    contained TODO FIXME XXX NB NOTE
-syntax region  wcfgComment start="#" end="$" contains=wcfgTodo,@Spell
-syntax region  wcfgString  start=/"/ skip=/\\"/ end=/"/
-syntax keyword wcfgBoolean true True false False
-syntax match   wcfgIdent   "\v<[^:[:space:]]+>"
-syntax match   wcfgNumber  "\v<[-+]?\d+>"
-syntax match   wcfgNumber  "\v<[-+]?\d*.\d+>"
-syntax match   wcfgNumber  "\v<[-+]?\d*\.?\d+([Ee]-?)?\d+>"
-syntax match   wcfgNumber  "\v<0[xX]\x+([Pp]-?)?\x+>"
-syntax match   wcfgNumber  "\v<0\o+>"
-syntax match   wcfgColon   ":"
-syntax match   wcfgComma   contained ","
-
-syntax match wcfgCommaError ","
-syntax match wcfgColonError contained ":"
-syntax match wcfgIdentError contained "\v<[^:[:space:]]+>"
+syntax match   wcfgIdentError "\<[^:[:space:]]\+\>" contained
+syntax keyword wcfgTodo       TODO FIXME XXX NB NOTE contained
+syntax region  wcfgComment    start="#" end="$" contains=wcfgTodo,@Spell
+syntax region  wcfgDict       transparent fold matchgroup=wcfgDictBound start="{" end="}" contains=ALLBUT,wcfgComma,wcfgColonError,wcfgIdentError
+syntax region  wcfgList       transparent matchgroup=wcfgListBound start="\[" end="\]" contains=ALLBUT,wcfgCommaError
+syntax region  wcfgString     start=/"/ skip=/\\"/ end=/"/ contains=NONE
+syntax match   wcfgNumber     "\<[-+]\?\d\+\(\.\d\+\)\?\([eE][-+]\?\d\+\)\?"
+syntax match   wcfgNumber     "\<0[xX]\x\+"
+syntax match   wcfgNumber     "\<0\o\+"
+syntax keyword wcfgBoolean    true True false False
+syntax match   wcfgComma      "," contained
+syntax match   wcfgColon      ":"
+syntax match   wcfgCommaError "\<,\>"
+syntax match   wcfgColonError ":" contained
 
 highlight default link wcfgTodo      Todo
 highlight default link wcfgComment   Comment
 highlight default link wcfgColon     Operator
 highlight default link wcfgComma     Operator
-highlight default link wcfgIdent     Identifier
 highlight default link wcfgNumber    Number
 highlight default link wcfgBoolean   Boolean
 highlight default link wcfgString    String
