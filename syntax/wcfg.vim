@@ -13,7 +13,7 @@ set cpo&vim
 syntax case match
 syntax sync minlines=100
 
-syntax region  wcfgDict    transparent fold matchgroup=wcfgDictBound start="{" end="}" contains=ALLBUT,wcfgComma,wcfgColonError
+syntax region  wcfgDict    transparent fold matchgroup=wcfgDictBound start="{" end="}" contains=ALLBUT,wcfgComma,wcfgColonError,wcfgIdentError
 syntax region  wcfgList    transparent matchgroup=wcfgListBound start="\[" end="\]" contains=ALLBUT,wcfgIdent,wcfgCommaError
 syntax keyword wcfgTodo    contained TODO FIXME XXX NB NOTE
 syntax region  wcfgComment start="#" end="$" contains=wcfgTodo,@Spell
@@ -30,6 +30,7 @@ syntax match   wcfgComma   contained ","
 
 syntax match wcfgCommaError ","
 syntax match wcfgColonError contained ":"
+syntax match wcfgIdentError contained "\v<[^:[:space:]]+>"
 
 highlight default link wcfgTodo      Todo
 highlight default link wcfgComment   Comment
@@ -44,6 +45,7 @@ highlight default link wcfgListBound Structure
 
 highlight default link wcfgCommaError Error
 highlight default link wcfgColonError Error
+highlight default link wcfgIdentError Error
 
 let b:current_syntax = "wcfg"
 let &cpo = s:cpo_save
