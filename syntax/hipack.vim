@@ -26,6 +26,7 @@ syntax keyword hipackBoolean    true True false False
 syntax match   hipackComma      ","
 syntax match   hipackColon      ":"
 syntax match   hipackColonError ":" contained
+syntax match   hipackAnnot      ":\<[^:\[\]\{\}\,[:space:]]\+\>"
 
 highlight default link hipackTodo      Todo
 highlight default link hipackComment   Comment
@@ -34,6 +35,7 @@ highlight default link hipackComma     Operator
 highlight default link hipackNumber    Number
 highlight default link hipackBoolean   Boolean
 highlight default link hipackString    String
+highlight default link hipackAnnot     Macro
 highlight default link hipackDictBound Structure
 highlight default link hipackListBound Structure
 
